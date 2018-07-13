@@ -18,61 +18,71 @@ This is what you get out of the box when you create a container with the provide
 * h2o plateform : [h2o](https://www.h2o.ai/)
 
 ---
+## Setup
+### Prerequisites
+Install Docker following the installation guide for your platform: [here](https://docs.docker.com/engine/installation/)
 
-## How to run it? 
-##### You can pull the already built image
+---
+
+## Obtaining the Docker image
+### Option 1: Download the Docker image from Docker Hub
 * Available here : 
 
 ```bash
 docker pull nielsborie/ml-docker
 ```
-
-##### And run it
-###### Basic run
-```bash
-docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
-```
-###### in detached mode (-d)
-```bash
-docker run --name ML-env -d -p 8887:8888 nielsborie/ml-docker
-```
-###### start & stop
-```bash
-docker start ML-env
-docker stop ML-env
-```
-###### If you want a real password (and avoid copy/paste token step...) 
-```bash
-docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f" 
-```
-**default password = admin**
-
-##### If you want to share your current working folder, you can map it with "-v" or "--volume"
-```bash
-docker run --name ML-env -p 8887:8888 -d -v </your-directory/>:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
-```
-
-###### If you need to change the password check : 
-[Jupyter notebook documentation](http://jupyter-notebook.readthedocs.io/en/stable/public_server.html)
-
-###### You can find additionnal info here : 
-[Jupyter docker documentation](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html?highlight=password)
-
----
-
-## How to build it? 
+### Option 2: Build the Docker image locally
 #### First clone the repository
 ```bash
 git clone https://github.com/nielsborie/ml-docker.git
 cd /ml-docker
 ```
-#### Basic building : 
+
+##### Basic building : 
 ```bash
 docker build . -t ml-docker
 ```
 
-#### If you have a proxy issue execute the following line : 
+##### If you have a proxy issue execute the following line : 
 ```bash
 docker build . --no-cache --force-rm --build-arg http_proxy=<proxy> --build-arg https_proxy=<proxy> --build-arg no_proxy=localhost,<proxy>,<proxy>,.an.local -t ml-docker
 ```
+
+## Running the Docker image as a Container
+Once we've built the image, we have all the frameworks we need installed in it. We can now spin up one or more containers using this image
+### Basic run
+```bash
+docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
+```
+### in detached mode (-d)
+```bash
+docker run --name ML-env -d -p 8887:8888 nielsborie/ml-docker
+```
+### start & stop
+```bash
+docker start ML-env
+docker stop ML-env
+```
+
+---
+
+## To go further 
+### If you want a real password (and avoid copy/paste token step...) 
+```bash
+docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f" 
+```
+**default password = admin**
+
+### If you want to share your current working folder, you can map it with "-v" or "--volume"
+```bash
+docker run --name ML-env -p 8887:8888 -d -v </your-directory/>:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
+```
+
+### If you need to change the password check : 
+[Jupyter notebook documentation](http://jupyter-notebook.readthedocs.io/en/stable/public_server.html)
+
+### You can find additionnal info here : 
+[Jupyter docker documentation](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html?highlight=password)
+
+---
 
