@@ -3,15 +3,19 @@ The ml-docker is a ready-to-run Docker image containing a large number of (pytho
 
 ---
 
-## What's in there? 
+## Specs
+This is what you get out of the box when you create a container with the provided image/Dockerfile:
 
-* Jupyter Notebook
-* Conda Python 3.6.x
-* Python Data Analysis : numpy, pandas, matplotlib, scipy, seaborn
-* Python Machine Learning : scikit-learn
-* Python Auto-ML : scikit-learn, xgboost, 
-* Python Hyper-Optimizer : hyperopt, sklearn-deap
-* Python Deep Learning : TensorFlow, Keras
+* Ubuntu 18.04
+* GCC/G++ 7
+* [Jupyter Notebook](https://hub.docker.com/r/jupyter/tensorflow-notebook/)
+* [Conda Python 3.6.x](https://www.anaconda.com/what-is-anaconda/)
+* Python Data Analysis : [Numpy](http://www.numpy.org/), [Pandas](http://pandas.pydata.org/), [Matplotlib](http://matplotlib.org/), [SciPy](https://www.scipy.org/), [Seaborn](https://seaborn.pydata.org/), [Yellowbrick](http://www.scikit-yb.org/en/latest/)
+* Python Machine Learning : [scikit-learn](https://www.anaconda.com/what-is-anaconda/), [xgboost](https://xgboost.readthedocs.io/en/latest/model.html), [LightGBM](https://lightgbm.readthedocs.io/en/latest/index.html), [Catboost](https://github.com/catboost/catboost), [mlxtend](https://github.com/rasbt/mlxtend), [gensim](https://radimrehurek.com/gensim/)
+* Python Auto-ML : [TPOT](https://epistasislab.github.io/tpot/), [h2o-automl](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)
+* Python Hyper-Optimizer : [hyperopt](https://github.com/hyperopt/hyperopt), [sklearn-deap](https://github.com/rsteca/sklearn-deap)
+* Python Deep Learning : [Tensorflow](https://www.tensorflow.org/), [Keras](http://keras.io/)
+* h2o plateform : [h2o](https://www.h2o.ai/)
 
 ---
 
