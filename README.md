@@ -1,5 +1,5 @@
 # ml-docker
-The ml-docker is a ready-to-run Docker image containing a large number of (python compatible)machine learning libraries.
+The ml-docker is a ready-to-run Docker image containing a large number of (python compatible) machine learning libraries.
 
 ---
 
@@ -26,7 +26,7 @@ Install Docker following the installation guide for your platform: [here](https:
 
 ## Obtaining the Docker image
 ### Option 1: Download the Docker image from Docker Hub
-* Available here : 
+* Available here : (https://hub.docker.com/r/nielsborie/ml-docker/)
 
 ```bash
 docker pull nielsborie/ml-docker
@@ -67,21 +67,23 @@ docker stop ML-env
 ---
 
 ## To go further 
-### If you want a real password (and avoid copy/paste token step...) 
+##### If you want a real password (and avoid copy/paste token step...) 
 ```bash
 docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f" 
 ```
 **default password = admin**
 
-### If you want to share your current working folder, you can map it with "-v" or "--volume"
+##### If you want to share your current working folder, you can map it with "-v" or "--volume"
 ```bash
 docker run --name ML-env -p 8887:8888 -d -v </your-directory/>:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
 ```
+---
 
-### If you need to change the password check : 
+
+##### If you need to change the password check : 
 [Jupyter notebook documentation](http://jupyter-notebook.readthedocs.io/en/stable/public_server.html)
 
-### You can find additionnal info here : 
+##### You can find additionnal info here : 
 [Jupyter docker documentation](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html?highlight=password)
 
 ---
