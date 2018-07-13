@@ -7,8 +7,11 @@ The ml-docker is a ready-to-run Docker image containing a large number of (pytho
 
 * Jupyter Notebook
 * Conda Python 3.6.x
-* Python Machine Learning : numpy, pandas, matplotlib, scipy, seaborn, scikit-learn
-* Python Deep Learning : TensorFlow+Keras
+* Python Data Analysis : numpy, pandas, matplotlib, scipy, seaborn
+* Python Machine Learning : scikit-learn
+* Python Auto-ML : scikit-learn, xgboost, 
+* Python Hyper-Optimizer : hyperopt, sklearn-deap
+* Python Deep Learning : TensorFlow, Keras
 
 ---
 
@@ -17,7 +20,7 @@ The ml-docker is a ready-to-run Docker image containing a large number of (pytho
 * Available here : 
 
 ```bash
-docker pull 
+docker pull nielsborie/ml-docker
 ```
 
 ##### And run it
@@ -36,13 +39,13 @@ docker stop ML-env
 ```
 ###### If you want a real password (and avoid copy/paste token step...) 
 ```bash
-docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:ff6a3551e13f:c3edadaa0cb4bed02293c96c14d755611069a4ba" 
+docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f" 
 ```
-**default password = bleckwen**
+**default password = admin**
 
 ##### If you want to share your current working folder, you can map it with "-v" or "--volume"
 ```bash
-docker run --name ML-env -p 8887:8888 -d -v </your-directory/>:/home/jovyan/work/ -e NB_UID=<your-UID/> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:ff6a3551e13f:c3edadaa0cb4bed02293c96c14d755611069a4ba"
+docker run --name ML-env -p 8887:8888 -d -v </your-directory/>:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
 ```
 
 ###### If you need to change the password check : 
@@ -66,6 +69,6 @@ docker build . -t ml-docker
 
 #### If you have a proxy issue execute the following line : 
 ```bash
-docker build . --no-cache --force-rm --build-arg http_proxy=http://172.16.99.9:3129 --build-arg https_proxy=http://172.16.99.9:3129 --build-arg no_proxy=localhost,127.0.0.1,172.26.1.100,172.26.1.107,.an.local -t ml-docker
+docker build . --no-cache --force-rm --build-arg http_proxy=<proxy> --build-arg https_proxy=<proxy> --build-arg no_proxy=localhost,<proxy>,<proxy>,.an.local -t ml-docker
 ```
 
