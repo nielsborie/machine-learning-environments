@@ -24,13 +24,31 @@ RUN apt-get update && \
 # --- Update alternatives
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 --slave /usr/bin/g++ g++ /usr/bin/g++-7
 
+# Install OpenJDK-8
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
+    apt-get clean;
+
+# Fix certificate issues
+RUN apt-get update && \
+    apt-get install ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f;
+
+# Setup JAVA_HOME -- useful for docker commandline
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+
+# --- Install h2o
+RUN $CONDA_DIR/bin/python -m pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o
+
 # --- Conda xgboost, lightgbm, catboost, h2o, gensim, mlxtend
 RUN conda install --quiet --yes \
     'boost' \
     'lightgbm' \
     'xgboost' \
     'catboost' \
-    'h2o' \
     'gensim' \
     'mlxtend' \
     'tabulate' && \
@@ -38,7 +56,8 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-# --- Install vowpalwabbit, hyperopt, tpot, sklearn-deap, yellowbrick
+
+# --- Install vowpalwabbit, hyperopt, tpot, sklearn-deap, yellowbrick, spacy
 RUN $CONDA_DIR/bin/python -m pip install vowpalwabbit \
 					 hyperopt \
 					 deap \
@@ -50,4 +69,5 @@ RUN $CONDA_DIR/bin/python -m pip install vowpalwabbit \
 					 tpot \
 					 sklearn-deap \
 					 yellowbrick \
+					 spacy \
 
