@@ -8,10 +8,12 @@ This is what you get out of the box when you create a container with the provide
 
 * Ubuntu 18.04
 * GCC/G++ 7
+* Java 8 
 * [Jupyter Notebook](https://hub.docker.com/r/jupyter/tensorflow-notebook/)
 * [Conda Python 3.6.x](https://www.anaconda.com/what-is-anaconda/)
 * Python Data Analysis : [Numpy](http://www.numpy.org/), [Pandas](http://pandas.pydata.org/), [Matplotlib](http://matplotlib.org/), [SciPy](https://www.scipy.org/), [Seaborn](https://seaborn.pydata.org/), [Yellowbrick](http://www.scikit-yb.org/en/latest/)
-* Python Machine Learning : [scikit-learn](https://www.anaconda.com/what-is-anaconda/), [xgboost](https://xgboost.readthedocs.io/en/latest/model.html), [LightGBM](https://lightgbm.readthedocs.io/en/latest/index.html), [Catboost](https://github.com/catboost/catboost), [mlxtend](https://github.com/rasbt/mlxtend), [gensim](https://radimrehurek.com/gensim/)
+* Python Machine Learning : [scikit-learn](https://www.anaconda.com/what-is-anaconda/), [xgboost](https://xgboost.readthedocs.io/en/latest/model.html), [LightGBM](https://lightgbm.readthedocs.io/en/latest/index.html), [Catboost](https://github.com/catboost/catboost), [mlxtend](https://github.com/rasbt/mlxtend)
+* Python NLP : [gensim](https://radimrehurek.com/gensim/), [spaCy](https://github.com/explosion/spaCy)
 * Python Auto-ML : [TPOT](https://epistasislab.github.io/tpot/), [h2o-automl](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)
 * Python Hyper-Optimizer : [hyperopt](https://github.com/hyperopt/hyperopt), [sklearn-deap](https://github.com/rsteca/sklearn-deap)
 * Python Deep Learning : [Tensorflow](https://www.tensorflow.org/), [Keras](http://keras.io/)
