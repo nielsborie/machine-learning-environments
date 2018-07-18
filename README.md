@@ -2,10 +2,7 @@
 An all-in-one Docker image for machine learning.
 ---
 
-<p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/logo.png" width=800 />
-</p>
-![alt text](https://github.com/nielsborie/ml-docker/blob/master/view/logo.png "Logo Title Text 1")
+![logo](https://github.com/nielsborie/ml-docker/blob/master/view/logo.png)
 
 ## Specs
 This is what you get out of the box when you create a container with the provided image/Dockerfile:
