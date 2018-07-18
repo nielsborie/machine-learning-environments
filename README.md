@@ -26,25 +26,25 @@ Install Docker following the installation guide for your platform: [here](https:
 ---
 
 ## Obtaining the Docker image
-### Option 1: Download the Docker image from Docker Hub
-* Available here : (https://hub.docker.com/r/nielsborie/ml-docker/)
+### * Option 1: Download the Docker image from Docker Hub
+Available here : (https://hub.docker.com/r/nielsborie/ml-docker/)
 
 ```bash
 docker pull nielsborie/ml-docker
 ```
-### Option 2: Build the Docker image locally
-#### First clone the repository
+### * Option 2: Build the Docker image locally
+##### 1. clone the repository
 ```bash
 git clone https://github.com/nielsborie/ml-docker.git
 cd /ml-docker
 ```
 
-##### Basic building : 
+##### 2. basic building : 
 ```bash
 docker build . -t ml-docker
 ```
 
-##### If you have a proxy issue execute the following line : 
+##### ⋅⋅2. If you have a proxy issue execute the following line : 
 ```bash
 docker build . --no-cache --force-rm --build-arg http_proxy=<proxy> --build-arg https_proxy=<proxy> --build-arg no_proxy=localhost,<proxy>,<proxy>,.an.local -t ml-docker
 ```
@@ -60,7 +60,7 @@ Once we've built the image, we have all the frameworks we need installed in it. 
 <img src="https://github.com/nielsborie/ml-docker/blob/master/view/jupyter.PNG" width=600 />
 </p>
 
-### Basic run
+### * Basic run
 ```bash
 docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 ```
@@ -75,14 +75,14 @@ docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 docker run --name ML-env -d -p 8887:8888 nielsborie/ml-docker
 ```
 
-### Start & Stop
+### * Start & Stop
 Once you create the container, all you need to do is launch it : 
 ```bash
 docker start ML-env
 docker stop ML-env
 ```
 
-### to enter in the running container
+#### to enter in the running container
 ```bash
 docker exec -it ML-env /bin/bash
 ```
@@ -90,14 +90,14 @@ docker exec -it ML-env /bin/bash
 <img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_root.PNG" width=600 />
 </p>
 
-## To go further 
-##### If you want a real password (and avoid copy/paste token step...) 
+To go further ... 
+##### * If you want a real password (and avoid copy/paste token step...) 
 ```bash
 docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f" 
 ```
 **default password = admin**
 
-##### If you want to share your current working folder, you can map it with "-v" or "--volume"
+##### * If you want to share your current working folder, you can map it with "-v" or "--volume"
 ```bash
 docker run --name ML-env -p 8887:8888 -d -v /sharedfolder:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
 ```
@@ -109,7 +109,8 @@ docker run --name ML-env -p 8887:8888 -d -v /sharedfolder:/home/jovyan/work/ -e 
 |`-it`             | This creates an interactive terminal you can use to iteract with your container |
 |`--name`             | This set a name to our container, in our case we use `ML-env` but we can change it |
 |`-p 8887:8888`    | This exposes the ports inside the container so they can be accessed from the host. The format is `-p <host-port>:<container-port>`. The default jupyter notebook runs on port 8888 |
-|`-v /sharedfolder:/root/sharedfolder/` | This shares the folder `/sharedfolder` on your host machine to `/home/jovyan/work/sharedfolder/` inside your container. Any data written to this folder by the container will be persistent. You can modify this to anything of the format `-v /local/shared/folder:/shared/folder/in/container/`
+|`-v /sharedfolder:/root/sharedfolder/` | This shares the folder `/sharedfolder` on your host machine to `/home/jovyan/work/sharedfolder/` inside your container. Any data written to this folder by the container will be persistent. You can modify this to anything of the format `-v /local/shared/folder:/shared/folder/in/container/` |
+|`-e NB_UID=<your-UID> --user root`   | This fix permission issues under the container, you need to replace <your-UID> with your UID, you can get it with : `id -u` |
 |`nielsborie/ml-docker`   | This the image that you want to run. The format is `image:tag`. In our case, we use the image `ml-docker` and tag `latest` |
 |`start-notebook.sh --NotebookApp.password`   | It allows to launch the jupyter with a password already configured to `bleckwen` |
 
