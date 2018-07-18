@@ -26,25 +26,25 @@ Install Docker following the installation guide for your platform: [here](https:
 ---
 
 ## Obtaining the Docker image
-### * Option 1: Download the Docker image from Docker Hub
+* ### Option 1: Download the Docker image from Docker Hub
 Available here : (https://hub.docker.com/r/nielsborie/ml-docker/)
 
 ```bash
 docker pull nielsborie/ml-docker
 ```
-### * Option 2: Build the Docker image locally
-##### 1. clone the repository
+* ### Option 2: Build the Docker image locally
+1. #####  clone the repository
 ```bash
 git clone https://github.com/nielsborie/ml-docker.git
 cd /ml-docker
 ```
 
-##### 2. basic building : 
+2. ##### basic building : 
 ```bash
 docker build . -t ml-docker
 ```
 
-##### ⋅⋅2. If you have a proxy issue execute the following line : 
+3. ##### If you have a proxy issue execute the following line : 
 ```bash
 docker build . --no-cache --force-rm --build-arg http_proxy=<proxy> --build-arg https_proxy=<proxy> --build-arg no_proxy=localhost,<proxy>,<proxy>,.an.local -t ml-docker
 ```
@@ -54,13 +54,19 @@ docker build . --no-cache --force-rm --build-arg http_proxy=<proxy> --build-arg 
 ## Running the Docker image as a Container
 Once we've built the image, we have all the frameworks we need installed in it. We can now spin up one or more containers using this image.
 
+
+> **Note:**
+
+> - This images is based on 
+> - By default the image automatically launches a jupyter notebook on port 8887 of your localhost.
+
 ##### By default the image automatically launches a jupyter notebook on port 8887 of your localhost. 
 
 <p align="center">
 <img src="https://github.com/nielsborie/ml-docker/blob/master/view/jupyter.PNG" width=600 />
 </p>
 
-### * Basic run
+* ### Basic run
 ```bash
 docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 ```
@@ -75,7 +81,7 @@ docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 docker run --name ML-env -d -p 8887:8888 nielsborie/ml-docker
 ```
 
-### * Start & Stop
+* ### Start & Stop
 Once you create the container, all you need to do is launch it : 
 ```bash
 docker start ML-env
@@ -91,13 +97,16 @@ docker exec -it ML-env /bin/bash
 </p>
 
 To go further ... 
-##### * If you want a real password (and avoid copy/paste token step...) 
+* ##### If you want a real password (and avoid copy/paste token step...) 
 ```bash
 docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f" 
 ```
-**default password = admin**
 
-##### * If you want to share your current working folder, you can map it with "-v" or "--volume"
+> **Note:**
+
+> - default password = admin
+
+* ##### If you want to share your current working folder, you can map it with "-v" or "--volume"
 ```bash
 docker run --name ML-env -p 8887:8888 -d -v /sharedfolder:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
 ```
@@ -107,7 +116,7 @@ docker run --name ML-env -p 8887:8888 -d -v /sharedfolder:/home/jovyan/work/ -e 
 | Parameter      | Explanation |
 |----------------|-------------|
 |`-it`             | This creates an interactive terminal you can use to iteract with your container |
-|`--name`             | This set a name to our container, in our case we use `ML-env` but we can change it |
+|`--name`             | This set a name to our container, in our case we use `ML-env` but you can change it |
 |`-p 8887:8888`    | This exposes the ports inside the container so they can be accessed from the host. The format is `-p <host-port>:<container-port>`. The default jupyter notebook runs on port 8888 |
 |`-v /sharedfolder:/root/sharedfolder/` | This shares the folder `/sharedfolder` on your host machine to `/home/jovyan/work/sharedfolder/` inside your container. Any data written to this folder by the container will be persistent. You can modify this to anything of the format `-v /local/shared/folder:/shared/folder/in/container/` |
 |`-e NB_UID=<your-UID> --user root`   | This fix permission issues under the container, you need to replace <your-UID> with your UID, you can get it with : `id -u` |
