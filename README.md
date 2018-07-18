@@ -25,10 +25,12 @@ Install Docker following the installation guide for your platform: [here](https:
 
 ---
 
-## Table of contents
+## Table of Contents
+1. [Obtaining the Docker image](#Obtaining the Docker image)
+2. [Running the Docker image as a Container](#Running the Docker image as a Container)
+3. [Third Example](#third-example)
 
-[TOC]
-
+<!-- toc -->
 ## Obtaining the Docker image
 * ### Option 1: Download the Docker image from Docker Hub
 Available here : (https://hub.docker.com/r/nielsborie/ml-docker/)
@@ -112,8 +114,6 @@ docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.
 ```bash
 docker run --name ML-env -p 8887:8888 -d -v /sharedfolder:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
 ```
----
-
 
 | Parameter      | Explanation |
 |----------------|-------------|
