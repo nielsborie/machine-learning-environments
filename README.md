@@ -87,7 +87,7 @@ docker stop ML-env
 docker exec -it ML-env /bin/bash
 ```
 <p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_exec.PNG" width=600 />
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_root.PNG" width=600 />
 </p>
 
 ## To go further 
