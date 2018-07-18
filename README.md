@@ -25,6 +25,10 @@ Install Docker following the installation guide for your platform: [here](https:
 
 ---
 
+## Table of contents
+
+[TOC]
+
 ## Obtaining the Docker image
 * ### Option 1: Download the Docker image from Docker Hub
 Available here : (https://hub.docker.com/r/nielsborie/ml-docker/)
@@ -60,10 +64,8 @@ Once we've built the image, we have all the frameworks we need installed in it. 
 > - This images is based on 
 > - By default the image automatically launches a jupyter notebook on port 8887 of your localhost.
 
-##### By default the image automatically launches a jupyter notebook on port 8887 of your localhost. 
-
 <p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/jupyter.PNG" width=600 />
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/jupyter.PNG" width=700 />
 </p>
 
 * ### Basic run
@@ -72,7 +74,7 @@ docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 ```
 
 <p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_run.PNG" width=600 />
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_run.PNG" width=700 />
 </p>
 
 
@@ -88,7 +90,7 @@ docker start ML-env
 docker stop ML-env
 ```
 
-#### to enter in the running container
+* ### Enter in the running container
 ```bash
 docker exec -it ML-env /bin/bash
 ```
