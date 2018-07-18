@@ -1,5 +1,5 @@
 # ml-docker
-An all-in-one Docker image for machine learning. Contains all the popular python machine learning librairies (scikit-learn, xgboost, LightGBM, gensim,Keras, etc...).
+An all-in-one Docker image for machine learning.
 ---
 
 ## Specs
@@ -49,8 +49,16 @@ docker build . -t ml-docker
 docker build . --no-cache --force-rm --build-arg http_proxy=<proxy> --build-arg https_proxy=<proxy> --build-arg no_proxy=localhost,<proxy>,<proxy>,.an.local -t ml-docker
 ```
 
+---
+
 ## Running the Docker image as a Container
 Once we've built the image, we have all the frameworks we need installed in it. We can now spin up one or more containers using this image.
+
+##### By default the image automatically launches a jupyter notebook on port 8887 of your localhost. 
+
+<p align="center">
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/jupyter.PNG" width=600 />
+</p>
 
 ### Basic run
 ```bash
@@ -58,32 +66,28 @@ docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 ```
 
 <p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_run.PNG" width=500 />
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_run.PNG" width=600 />
 </p>
 
 
-### in detached mode (-d)
+##### If you don't want to be stick to your terminal, you can run it in detached mode (-d)
 ```bash
 docker run --name ML-env -d -p 8887:8888 nielsborie/ml-docker
 ```
-### start & stop
+
+### Start & Stop
+Once you create the container, all you need to do is launch it : 
 ```bash
 docker start ML-env
 docker stop ML-env
 ```
-
-By default the image automatically launches a jupyter notebook on port 8887 of your localhost. 
-
-<p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/jupyter.PNG" width=500 />
-</p>
 
 ### to enter in the running container
 ```bash
 docker exec -it ML-env /bin/bash
 ```
 <p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_exec.PNG" width=500 />
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_exec.PNG" width=600 />
 </p>
 
 ## To go further 
