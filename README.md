@@ -6,7 +6,6 @@ An all-in-one Docker image for machine learning.
 <img src="https://github.com/nielsborie/ml-docker/blob/master/view/logo.png" width=800 />
 </p>
 
-
 ## Specs
 This is what you get out of the box when you create a container with the provided image/Dockerfile:
 
@@ -125,7 +124,7 @@ docker run --name ML-env -p 8887:8888 -d -v /sharedfolder:/home/jovyan/work/ -e 
 |`-v /sharedfolder:/root/sharedfolder/` | This shares the folder `/sharedfolder` on your host machine to `/home/jovyan/work/sharedfolder/` inside your container. Any data written to this folder by the container will be persistent. You can modify this to anything of the format `-v /local/shared/folder:/shared/folder/in/container/` |
 |`-e NB_UID=<your-UID> --user root`   | This fix permission issues under the container, you need to replace <your-UID> with your UID.  You can get it with : `id -u` |
 |`nielsborie/ml-docker`   | This the image that you want to run. The format is `image:tag`. In our case, we use the image `ml-docker` and tag `latest` |
-|`start-notebook.sh --NotebookApp.password`   | It allows to launch the jupyter with a password already configured to `bleckwen` |
+|`start-notebook.sh --NotebookApp.password`   | It allows to launch the jupyter with a password already configured to `admin` |
 
 ---
 
