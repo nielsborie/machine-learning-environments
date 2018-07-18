@@ -3,7 +3,7 @@ An all-in-one Docker image for machine learning.
 ---
 
 <p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/logo.PNG" width=800 />
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/logo.png" width=800 />
 </p>
 
 
