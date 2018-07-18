@@ -70,9 +70,8 @@ Simplest command to launch the container.
 docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 ```
 
-<p align="center">
-<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_run.PNG" width=700 />
-</p>
+![docker_run](https://github.com/nielsborie/ml-docker/blob/master/view/docker_run.PNG)
+
 
 
 ##### If you don't want to be stick to your terminal, you can run it in detached mode (-d)
