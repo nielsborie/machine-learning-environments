@@ -1,6 +1,5 @@
 # ml-docker
-The ml-docker is a ready-to-run Docker image containing a large number of (python compatible) machine learning libraries.
-
+An all-in-one Docker image for machine learning. Contains all the popular python machine learning librairies (scikit-learn, xgboost, LightGBM, gensim,Keras, etc...).
 ---
 
 ## Specs
@@ -51,11 +50,18 @@ docker build . --no-cache --force-rm --build-arg http_proxy=<proxy> --build-arg 
 ```
 
 ## Running the Docker image as a Container
-Once we've built the image, we have all the frameworks we need installed in it. We can now spin up one or more containers using this image
+Once we've built the image, we have all the frameworks we need installed in it. We can now spin up one or more containers using this image.
+
 ### Basic run
 ```bash
 docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 ```
+
+<p align="center">
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_run.PNG" width=500 />
+</p>
+
+
 ### in detached mode (-d)
 ```bash
 docker run --name ML-env -d -p 8887:8888 nielsborie/ml-docker
@@ -66,7 +72,19 @@ docker start ML-env
 docker stop ML-env
 ```
 
----
+By default the image automatically launches a jupyter notebook on port 8887 of your localhost. 
+
+<p align="center">
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/jupyter.PNG" width=500 />
+</p>
+
+### to enter in the running container
+```bash
+docker exec -it ML-env /bin/bash
+```
+<p align="center">
+<img src="https://github.com/nielsborie/ml-docker/blob/master/view/docker_exec.PNG" width=500 />
+</p>
 
 ## To go further 
 ##### If you want a real password (and avoid copy/paste token step...) 
@@ -77,8 +95,20 @@ docker run --name ML-env -d -p 8887:8888 -d nielsborie/ml-docker start-notebook.
 
 ##### If you want to share your current working folder, you can map it with "-v" or "--volume"
 ```bash
-docker run --name ML-env -p 8887:8888 -d -v </your-directory/>:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
+docker run --name ML-env -p 8887:8888 -d -v /sharedfolder:/home/jovyan/work/ -e NB_UID=<your-UID> --user root nielsborie/ml-docker start-notebook.sh --NotebookApp.password="sha1:b6dba7097c97:7bded30fcbd5089adb3b63496d5e68921e102a5f"
 ```
+---
+
+
+| Parameter      | Explanation |
+|----------------|-------------|
+|`-it`             | This creates an interactive terminal you can use to iteract with your container |
+|`--name`             | This set a name to our container, in our case we use `ML-env` but we can change it |
+|`-p 8887:8888`    | This exposes the ports inside the container so they can be accessed from the host. The format is `-p <host-port>:<container-port>`. The default jupyter notebook runs on port 8888 |
+|`-v /sharedfolder:/root/sharedfolder/` | This shares the folder `/sharedfolder` on your host machine to `/home/jovyan/work/sharedfolder/` inside your container. Any data written to this folder by the container will be persistent. You can modify this to anything of the format `-v /local/shared/folder:/shared/folder/in/container/`
+|`nielsborie/ml-docker`   | This the image that you want to run. The format is `image:tag`. In our case, we use the image `ml-docker` and tag `latest` |
+|`start-notebook.sh --NotebookApp.password`   | It allows to launch the jupyter with a password already configured to `bleckwen` |
+
 ---
 
 
