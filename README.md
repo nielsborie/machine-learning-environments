@@ -20,6 +20,7 @@ This is what you get out of the box when you create a container with the provide
 * Python Deep Learning : [Tensorflow](https://www.tensorflow.org/), [Keras](http://keras.io/)
 * Python interpretability : [shap](https://github.com/slundberg/shap), [skope-rules](https://github.com/scikit-learn-contrib/skope-rules)
 * Python Genetic Programming : [gplearn](http://gplearn.readthedocs.io/en/stable/intro.html)
+* Python Topological Data Analysis (TDA) : [KeplerMapper](https://github.com/MLWave/kepler-mapper)
 * h2o plateform : [h2o](https://www.h2o.ai/)
 
 ---
