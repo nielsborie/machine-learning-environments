@@ -18,6 +18,8 @@ This is what you get out of the box when you create a container with the provide
 * Python Auto-ML : [TPOT](https://epistasislab.github.io/tpot/), [h2o-automl](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)
 * Python Hyper-Optimizer : [hyperopt](https://github.com/hyperopt/hyperopt), [sklearn-deap](https://github.com/rsteca/sklearn-deap)
 * Python Deep Learning : [Tensorflow](https://www.tensorflow.org/), [Keras](http://keras.io/)
+* Python interpretability : [shap](https://github.com/slundberg/shap), [skope-rules](https://github.com/scikit-learn-contrib/skope-rules)
+* Python Genetic Programming : [gplearn](http://gplearn.readthedocs.io/en/stable/intro.html)
 * h2o plateform : [h2o](https://www.h2o.ai/)
 
 ---
