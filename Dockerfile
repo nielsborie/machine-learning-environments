@@ -73,3 +73,4 @@ RUN $CONDA_DIR/bin/python -m pip install vowpalwabbit \
 					 gplearn \
 					 kmapper \
                                          skope-rules \
+					 shap \
