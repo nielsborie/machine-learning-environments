@@ -70,3 +70,6 @@ RUN $CONDA_DIR/bin/python -m pip install vowpalwabbit \
 					 sklearn-deap \
 					 yellowbrick \
 					 spacy \
+					 gplearn \
+					 kmapper \
+                                         skope-rules \
