@@ -74,3 +74,4 @@ RUN $CONDA_DIR/bin/python -m pip install vowpalwabbit \
 					 kmapper \
                                          skope-rules \
 					 shap \
+					 lime \
