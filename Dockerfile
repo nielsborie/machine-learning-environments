@@ -75,3 +75,38 @@ RUN $CONDA_DIR/bin/python -m pip install vowpalwabbit \
                                          skope-rules \
 					 shap \
 					 lime \
+
+###########
+#
+# Add some usefull libs, inspired by kaggle's Dockerfile
+# CREDITS : https://hub.docker.com/r/kaggle/python/dockerfile
+#
+###########
+RUN $CONDA_DIR/bin/python -m pip install --upgrade mpld3
+RUN $CONDA_DIR/bin/python -m pip install mplleaflet && \
+					 gpxpy && \
+					 arrow && \
+					 sexmachine && \
+					 Geohash && \
+					 deap && \
+					 haversine && \
+					 toolz cytoolz && \
+					 sacred && \
+					 plotly && \
+					 git+https://github.com/nicta/dora.git && \
+					 git+https://github.com/hyperopt/hyperopt.git && \
+# tflean. Deep learning library featuring a higher-level API for TensorFlow. http://tflearn.org
+					 git+https://github.com/tflearn/tflearn.git && \
+					 fitter && \
+					 langid && \
+# Delorean. Useful for dealing with datetime
+					 delorean && \
+					 trueskill && \
+					 heamy && \
+					 vida && \
+# Useful data exploration libraries (for missing data and generating reports)
+					 missingno && \
+					 pandas-profiling && \
+					 s2sphere
+# clean up pip cache
+RUN rm -rf /root/.cache/pip/*
