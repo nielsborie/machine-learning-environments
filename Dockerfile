@@ -74,7 +74,7 @@ RUN $CONDA_DIR/bin/python -m pip install vowpalwabbit \
 					 kmapper \
                                          skope-rules \
 					 shap \
-					 lime \
+					 lime 
 
 ###########
 #
@@ -82,7 +82,7 @@ RUN $CONDA_DIR/bin/python -m pip install vowpalwabbit \
 # CREDITS : https://hub.docker.com/r/kaggle/python/dockerfile
 #
 ###########
-RUN $CONDA_DIR/bin/python -m pip install --upgrade mpld3
+#RUN $CONDA_DIR/bin/python -m pip install --upgrade mpld3
 RUN $CONDA_DIR/bin/python -m pip install mplleaflet && \
 					 gpxpy && \
 					 arrow && \
