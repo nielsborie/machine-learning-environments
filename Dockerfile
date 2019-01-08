@@ -88,7 +88,6 @@ RUN $CONDA_DIR/bin/python -m pip install mplleaflet \
 					 arrow \
 					 sexmachine \
 					 Geohash \
-					 deap \
 					 haversine \
 					 toolz cytoolz \
 					 sacred \
