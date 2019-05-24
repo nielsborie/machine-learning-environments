@@ -92,8 +92,7 @@ RUN $CONDA_DIR/bin/python -m pip install mplleaflet \
 					 toolz cytoolz \
 					 sacred \
 					 plotly \
-					 git+https://github.com/nicta/dora.git \
-					 git+https://github.com/hyperopt/hyperopt.git \
+					 git+https://github.com/nicta/dora.git
 # tflean. Deep learning library featuring a higher-level API for TensorFlow. http://tflearn.org
 					 git+https://github.com/tflearn/tflearn.git \
 					 fitter \
