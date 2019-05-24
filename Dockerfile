@@ -106,5 +106,8 @@ RUN $CONDA_DIR/bin/python -m pip install mplleaflet \
 					 missingno \
 					 pandas-profiling \
 					 s2sphere
+# Upgrade tables
+RUN $CONDA_DIR/bin/python -m pip --upgrade tables
+ 
 # clean up pip cache
 RUN rm -rf /root/.cache/pip/*
