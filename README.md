@@ -17,7 +17,7 @@ This is what you get out of the box when you create a container with the provide
 * Python NLP : [gensim](https://radimrehurek.com/gensim/), [spaCy](https://github.com/explosion/spaCy)
 * Python Auto-ML : [TPOT](https://epistasislab.github.io/tpot/), [h2o-automl](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)
 * Python Hyper-Optimizer : [hyperopt](https://github.com/hyperopt/hyperopt), [sklearn-deap](https://github.com/rsteca/sklearn-deap)
-* Python Deep Learning : [Tensorflow](https://www.tensorflow.org/), [Keras](http://keras.io/)
+* Python Deep Learning : [Tensorflow](https://www.tensorflow.org/), [Keras](http://keras.io/), [tflearn](http://tflearn.org/)
 * Python interpretability : [shap](https://github.com/slundberg/shap), [skope-rules](https://github.com/scikit-learn-contrib/skope-rules), [lime](https://github.com/marcotcr/lime)
 * Python Genetic Programming : [gplearn](http://gplearn.readthedocs.io/en/stable/intro.html)
 * Python Topological Data Analysis (TDA) : [KeplerMapper](https://github.com/MLWave/kepler-mapper)
