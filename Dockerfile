@@ -4,6 +4,9 @@ FROM jupyter/tensorflow-notebook:5811dcb711ba
 
 LABEL maintainer="Niels BORIE"
 
+# Env variables
+ENV VERSION 0.1
+
 USER root
 
 # --- Install python-tk htop python-boost
