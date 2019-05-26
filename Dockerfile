@@ -4,9 +4,6 @@ FROM jupyter/tensorflow-notebook:5811dcb711ba
 
 LABEL maintainer="Niels BORIE"
 
-# Env variables
-ENV VERSION 0.1
-
 USER root
 
 # --- Install python-tk htop python-boost
@@ -96,6 +93,7 @@ RUN $CONDA_DIR/bin/python -m pip install mplleaflet \
 					 sacred \
 					 plotly \
 					 git+https://github.com/nicta/dora.git \
+					 git+https://github.com/hyperopt/hyperopt.git \
 # tflean. Deep learning library featuring a higher-level API for TensorFlow. http://tflearn.org
 					 git+https://github.com/tflearn/tflearn.git \
 					 fitter \
@@ -109,8 +107,5 @@ RUN $CONDA_DIR/bin/python -m pip install mplleaflet \
 					 missingno \
 					 pandas-profiling \
 					 s2sphere
-# Upgrade tables
-RUN $CONDA_DIR/bin/python -m pip --upgrade tables
- 
 # clean up pip cache
 RUN rm -rf /root/.cache/pip/*
