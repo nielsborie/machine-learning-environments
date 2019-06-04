@@ -107,5 +107,13 @@ RUN $CONDA_DIR/bin/python -m pip install mplleaflet \
 					 missingno \
 					 pandas-profiling \
 					 s2sphere
+###########
+#
+# Issue #1
+# pandas.read_hdf
+#
+###########
+RUN $CONDA_DIR/bin/python -m pip install --upgrade tables
+
 # clean up pip cache
 RUN rm -rf /root/.cache/pip/*
