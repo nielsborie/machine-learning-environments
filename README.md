@@ -2,7 +2,7 @@
 An all-in-one Docker image for machine learning.
 ---
 
-![logo](https://github.com/nielsborie/ml-docker/blob/master/view/logo.png)
+![logo](./doc/logo.png)
 
 ## Specs
 This is what you get out of the box when you create a container with the provided image/Dockerfile:
@@ -65,7 +65,7 @@ Once we've built the image, we have all the frameworks we need installed in it. 
 > - This images is based on [jupyter-tensorflow docker](https://github.com/jupyter/docker-stacks/tree/master/tensorflow-notebook).
 > - By default the image automatically launches a jupyter notebook on port 8887 of your localhost.
 
-![jupyter](https://github.com/nielsborie/ml-docker/blob/master/view/jupyter.PNG)
+![jupyter](./doc/jupyter.PNG)
 
 * ### Basic run
 Simplest command to launch the container.
@@ -73,7 +73,7 @@ Simplest command to launch the container.
 docker run --name ML-env -p 8887:8888 nielsborie/ml-docker
 ```
 
-![docker_run](https://github.com/nielsborie/ml-docker/blob/master/view/docker_run.PNG)
+![docker_run](./doc/docker_run.PNG)
 
 
 
@@ -96,7 +96,7 @@ Since you launched the container, you can get in and be root inside the image!
 docker exec -it ML-env /bin/bash
 ```
 
-![docker_root](https://github.com/nielsborie/ml-docker/blob/master/view/docker_root.PNG)
+![docker_root](./doc/docker_root.PNG)
 
 * ### Customize your Container
 * ##### If you want a real password (and avoid copy/paste token step...) 
