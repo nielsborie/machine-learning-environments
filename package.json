@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An all-in-one Docker image for machine learning. ---",
   "directories": {
-    "doc": "doc"
+    "doc": "docs"
   },
   "repository": {
     "type": "git",
