@@ -33,8 +33,6 @@ jobs:
       - name: Build image and push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          # relative path to the place where source code with Dockerfile is located
-          context: ./Dockerfile
           # Note: tags has to be all lower-case
           tags: nielsborie/machine-learning-environments:latest
           # build on feature branches, push only on main branch
