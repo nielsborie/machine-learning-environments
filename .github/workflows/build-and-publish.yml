@@ -31,9 +31,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build image and push to Docker Hub
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
-          # Note: tags has to be all lower-case
+          context: "{{defaultContext}}:advanced"
           tags: nielsborie/machine-learning-environments:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
