@@ -1,6 +1,6 @@
 # Copyright (c) Niels Borie.
 
-FROM base-py39
+FROM nielsborie/base-py39
 
 LABEL maintainer="Niels BORIE"
 
