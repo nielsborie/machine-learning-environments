@@ -37,3 +37,7 @@ stop: ## Stop the machine-learning-environments container
 ### RELEASE ###
 generate-changelog: ## Generate/Update CHANGELOG.md file
 	gitmoji-changelog
+
+### GitHub action test ###
+test_github_actions:
+	act --job create_release --eventpath tests/resources/trigger-release.event
