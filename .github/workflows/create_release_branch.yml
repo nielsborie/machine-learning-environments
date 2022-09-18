@@ -7,31 +7,39 @@ on:
         required: true
       releaseDescription:
         description: "A short description of the release content (will be added the PR's body)"
-        required: true
+        required: false
       nextReleaseVersion:
         description: 'Next release version (1.1.1-snapshot)'
         required: true
 jobs:
-  createrelease:
+  create_release:
     runs-on: ubuntu-latest
 
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
-    - name: Create release branch
-      run: git checkout -b release/v${{ github.event.inputs.releaseVersion }}
-    - name: Initialize mandatory git config
+      uses: actions/checkout@v3
+    - name: Change version number and set new snapshot version
       run: |
-       git config user.name "GitHub Actions"
-       git config user.email noreply@github.com
-    - name: Change version number and name
-      run: printf '${{ github.event.inputs.releaseVersion }}' > version.txt
+        printf '${{ github.event.inputs.releaseVersion }}' > version.txt
+        printf '${{ github.event.inputs.nextReleaseVersion }}' > snapshot.txt
+    - name: Change version in package.json
+      uses: sergeysova/jq-action@v2
+      with:
+        cmd: "jq --arg a '${{ github.event.inputs.releaseVersion }}' '.version = $a' package.json > tmp.$$.json && mv tmp.$$.json package.json"
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Install gitmoji-changelog
+      run: npm install -g gitmoji-changelog
     - name: Update Changelog
-      run: make generate-changelog
+      run: gitmoji-changelog
     - name: Commit changelog and manifest files
       id: make-commit
       run: |
-        git add app_versions.gradle
+        git add version.txt
+        git add snapshot.txt
+        git add package.json
         git add CHANGELOG.md
         git commit --message ":bookmark: Prepare release ${{ github.event.inputs.releaseVersion }}"
         echo "::set-output name=commit::$(git rev-parse HEAD)"
