@@ -1,0 +1,8 @@
+{
+  "action": "workflow_dispatch",
+  "inputs": {
+      "releaseVersion": "1.2.0",
+      "releaseDescription": "description",
+      "nextReleaseVersion": "1.2.0-SNAPSHOT"
+  }
+}
