@@ -1,3 +1,5 @@
+[![GitHub CI](https://img.shields.io/github/workflow/status/nielsborie/machine-learning-environments/Build%20and%20Publish/develop)](https://github.com/nielsborie/machine-learning-environments/actions/workflows/build_and_publish.yml)
+
 # machine-learning-environments
 An all-in-one Docker image for machine learning.
 ---
