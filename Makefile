@@ -24,8 +24,14 @@ docker-push: ## Push machine-learning-environments image to registry
     fi;
 
 ### Running environments ###
-docker-run: ## Run machine-learning-environments using docker image
-	docker run --name ML-env -d -p 8887:8888 ${REGISTRY_URL}/${PROJECT_NAME}:latest
+docker-run: ## Run machine-learning-environments using docker image (args: version=[version])
+    ifeq ($(version),)
+    VERSION=latest
+    else
+    VERSION=$(version)
+    endif
+    #@echo "▶️ Running ${VERSION} ..."
+    docker run --name ML-env -d -p 8887:8888 ${REGISTRY_URL}/${PROJECT_NAME}:${VERSION}
 
 start: ## Start the machine-learning-environments container
 	docker start ML-env
