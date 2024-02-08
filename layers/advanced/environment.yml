@@ -1,0 +1,37 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # version
+  - python=9.9.9
+  # vanilla
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlxtend
+  - scikit-mdr
+  - vowpalwabbit
+  # interpretability
+  - shap
+  - lime
+  # nlp
+  - gensim
+  - spacy
+  # automl
+  - hyperopt
+  - optuna
+  - tpot
+  # genetic
+  - deap
+  - skrebate
+  - yellowbrick
+  - gplearn
+  # manipulation (dates, GPS, ...)
+  - gpxpy
+  - arrow
+  - haversine
+  - toolz
+  - cytoolz
+  - sacred
+  - missingno
