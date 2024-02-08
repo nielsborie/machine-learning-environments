@@ -1,0 +1,18 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # data manipulation
+  - pandas
+  - numpy
+  - pyarrow
+  # vanilla
+  - scikit-learn
+  # plot
+  - plotly
+  - bokeh
+  - seaborn
+  # other
+  - ipykernel
+  - pip
+  - tqdm
