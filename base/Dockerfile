@@ -1,10 +1,20 @@
 FROM continuumio/miniconda3
 
-RUN conda install mamba -n base -c conda-forge
+ARG PYTHON_VERSION=3.9
+ARG PYTHON_RELEASE_VERSION=3.9.18
 
-RUN conda create -n py39 python=3.9
+ENV ENV_NAME=py${PYTHON_VERSION}
 
-# Make RUN commands use the new environment:
-SHELL ["conda", "run", "--no-capture-output", "-n", "py39", "/bin/bash", "-c"]
+RUN conda update conda && conda install mamba -n base -c conda-forge
 
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "py39", "python"]
+COPY environment.yml /opt/environment.yml
+
+RUN conda create -n ${ENV_NAME} python=${PYTHON_RELEASE_VERSION} -y
+
+RUN conda env update -n ${ENV_NAME} -f /opt/environment.yml && \
+    conda clean --all --yes
+
+RUN echo "source activate ${ENV_NAME}" > ~/.bashrc
+ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
+
+ENTRYPOINT ["/bin/bash"]
