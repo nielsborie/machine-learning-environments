@@ -14,5 +14,19 @@
   "bugs": {
     "url": "https://github.com/nielsborie/machine-learning-environments/issues"
   },
-  "homepage": "https://github.com/nielsborie/machine-learning-environments#readme"
+  "homepage": "https://github.com/nielsborie/machine-learning-environments#readme",
+  "python": {
+        "3.9": {
+            "release": "3.9.18"
+        },
+        "3.10": {
+            "release": "3.10.13"
+        },
+        "3.11": {
+            "release": "3.11.8"
+        },
+        "3.12": {
+            "release": "3.12.2"
+        }
+    }
 }
