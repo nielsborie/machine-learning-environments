@@ -6,20 +6,12 @@ on:
   pull_request:
 
 jobs:
-  build-and-push-docker-image:
-    name: Build Docker image and push to repositories
+  build-and-push-docker-images:
+    name: Build and push Docker images
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Prepare tag
-        id: prep
-        run: |
-          DOCKER_IMAGE=nielsborie/machine-learning-environments
-          VERSION=`cat ./SNAPSHOT.txt`
-          TAGS="${DOCKER_IMAGE}:${VERSION}"
-          echo ::set-output name=tags::${TAGS}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -35,18 +27,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v5
-        with:
-          builder: ${{ steps.buildx.outputs.name }}
-          context: "{{defaultContext}}:advanced"
-          platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.prep.outputs.tags }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+      - name: Clean up unnecessary directories
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+      - name: Build and push image
+        run: |
+          make build-all-images
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

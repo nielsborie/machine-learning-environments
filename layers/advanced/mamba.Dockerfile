@@ -4,7 +4,7 @@ ARG PYTHON_RELEASE_VERSION
 ARG IMAGE_VERSION
 ARG BUILDER
 
-FROM nielsborie/machine-learning-environments:base-${BUILDER}-py${PYTHON_VERSION}-${IMAGE_VERSION} as base
+FROM nielsborie/base-${BUILDER}-py${PYTHON_VERSION}:${IMAGE_VERSION} as base
 
 ARG PYTHON_VERSION
 ARG PYTHON_RELEASE_VERSION
@@ -31,7 +31,7 @@ ENV PATH="/opt/openjdk-17/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/opt/openjdk-17/lib/server"
 
 # Install additional Python packages and configure Java
-RUN micromamba run -n py3.9 pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o
+RUN micromamba run -n py3.9 pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o --no-cache-dir
 
 USER root
 RUN rm -rf /root/.cache/pip/*
