@@ -16,4 +16,6 @@ RUN micromamba config set extract_threads 1 && \
 
 ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
 
+WORKDIR /home/mambauser
+
 ENTRYPOINT ["/bin/bash"]
