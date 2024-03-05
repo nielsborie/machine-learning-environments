@@ -10,7 +10,7 @@ jobs:
     name: Build and push Docker images
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: ↙️ Checkout code
         uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -24,7 +24,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: ✨Clean up unnecessary directories
+      - name: ✨ Clean up unnecessary directories
         run: |
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
