@@ -76,19 +76,10 @@ push-all-images: ## Push all machine-learning-environments docker images to the 
 build-image: ## Build a single machine-learning-environments docker image (args : PYTHON_VERSION, LAYER, BUILDER, IMAGE_VERSION)
 	@echo "Building image using REGISTRY_URL=$(REGISTRY_URL) PYTHON_VERSION=$(PYTHON_VERSION) LAYER=$(LAYER) BUILDER=$(BUILDER) IMAGE_VERSION=$(IMAGE_VERSION)"
 	@real_python_version=$$(jq -r '.python."$(PYTHON_VERSION)".release' package.json); \
-	if [ "$(ARCH)" != "arm64" ]; then \
-		docker buildx build --progress=plain --no-cache --force-rm -t $(REGISTRY_URL)/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION) \
-        --build-arg PYTHON_RELEASE_VERSION=$$real_python_version --build-arg PYTHON_VERSION=$(PYTHON_VERSION) \
-        --build-arg IMAGE_VERSION=$(IMAGE_VERSION) --build-arg BUILDER=$(BUILDER) \
-        --platform linux/amd64,linux/arm64 \
-        -f layers/$(LAYER)/$(BUILDER).Dockerfile layers/$(LAYER)/ \
-        --push; \
-	else \
-		docker build --progress=plain --no-cache --force-rm -t $(REGISTRY_URL)/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION) \
+	docker build --progress=plain --no-cache --force-rm -t $(REGISTRY_URL)/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION) \
 		--build-arg PYTHON_RELEASE_VERSION=$$real_python_version --build-arg PYTHON_VERSION=$(PYTHON_VERSION) \
 		--build-arg IMAGE_VERSION=$(IMAGE_VERSION) --build-arg BUILDER=$(BUILDER) \
 		-f layers/$(LAYER)/$(BUILDER).Dockerfile layers/$(LAYER)/; \
-	fi;
 
 push-image: ## Push machine-learning-environments image to registry (args : PYTHON_VERSION, LAYER, BUILDER, IMAGE_VERSION)
 	@echo "Pushing image $(REGISTRY_URL)/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION)"
