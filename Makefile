@@ -4,7 +4,7 @@ GIT_COMMIT ?= $(shell git rev-parse HEAD)
 PYTHON_INTERPRETER = python3
 PYTHON_VERSION ?= 3.11
 OS_NAME = $(shell uname)
-REGISTRY_URL = nielsborie
+REGISTRY_URL := nielsborie
 LAYER ?= base
 BUILDER ?= conda
 
