@@ -76,21 +76,21 @@ push-all-images: ## Push all machine-learning-environments docker images to the 
 build-image: ## Build a single machine-learning-environments docker image (args : PYTHON_VERSION, LAYER, BUILDER, IMAGE_VERSION)
 	@echo "Building image using PYTHON_VERSION=$(PYTHON_VERSION) LAYER=$(LAYER) BUILDER=$(BUILDER) IMAGE_VERSION=$(IMAGE_VERSION)"
 	@real_python_version=$$(jq -r '.python."$(PYTHON_VERSION)".release' package.json); \
-	docker build --progress=plain --no-cache --force-rm -t nielsborie/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION) \
+	docker build --progress=plain --no-cache --force-rm -t ggggggg/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION) \
 		--build-arg PYTHON_RELEASE_VERSION=$$real_python_version --build-arg PYTHON_VERSION=$(PYTHON_VERSION) \
 		--build-arg IMAGE_VERSION=$(IMAGE_VERSION) --build-arg BUILDER=$(BUILDER) \
 		-f layers/$(LAYER)/$(BUILDER).Dockerfile layers/$(LAYER)/; \
 
 push-image: ## Push machine-learning-environments image to registry (args : PYTHON_VERSION, LAYER, BUILDER, IMAGE_VERSION)
-	@echo "Pushing image nielsborie/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION)"
-	docker push nielsborie/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION)
+	@echo "Pushing image ggggggg/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION)"
+	docker push ggggggg/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION)
 	if [ "${BRANCH_NAME}" = "main" ]; then \
-        docker push nielsborie/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):latest; \
+        docker push ggggggg/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):latest; \
     fi;
 
 ### Running environments ###
 docker-run: ## Run machine-learning-environments using docker image  (args : PYTHON_VERSION, LAYER, BUILDER, IMAGE_VERSION)
-	docker run --rm -it -d --name ML-env nielsborie/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION)
+	docker run --rm -it -d --name ML-env ggggggg/$(LAYER)-$(BUILDER)-py$(PYTHON_VERSION):$(IMAGE_VERSION)
 
 docker-interactive: ## Enter into the machine-learning-environments container
 	docker exec -it ML-env /bin/bash
@@ -114,7 +114,7 @@ run-within-container:  ## Execute a specified Python file within a pre-started c
 
 run-in-container: ## Execute a specified Python file within a container without requiring prior startup. (args : SCRIPT_FILE)
 	@echo "Executing the specified Python file within a container without requiring prior startup..."
-	docker run -it --rm -v "${PWD}"/scripts:/home/scripts -w /home nielsborie/machine-learning-environments:${LAYER}-conda-py3.11--upgrade_and_refactos -c "python /home/scripts/$(SCRIPT_FILE)"
+	docker run -it --rm -v "${PWD}"/scripts:/home/scripts -w /home ggggggg/machine-learning-environments:${LAYER}-conda-py3.11--upgrade_and_refactos -c "python /home/scripts/$(SCRIPT_FILE)"
 
 ### RELEASE ###
 ## Generate/Update CHANGELOG.md file
