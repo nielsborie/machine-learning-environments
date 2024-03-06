@@ -51,9 +51,9 @@ build-and-push-all-images: ## Build all machine-learning-environments docker ima
 	@for version in $(SUPPORTED_PYTHON_VERSIONS); do \
 		for builder in $(ALL_BUILDERS); do \
 			for layer in $(ALL_LAYERS); do \
-				$(MAKE) build-image PYTHON_VERSION=$$version LAYER=$$layer BUILDER=$$builder IMAGE_VERSION=$(IMAGE_VERSION); \
+				$(MAKE) build-image REGISTRY_URL=$(REGISTRY_URL) PYTHON_VERSION=$$version LAYER=$$layer BUILDER=$$builder IMAGE_VERSION=$(IMAGE_VERSION); \
 				if [ "$(BRANCH_NAME)" = "develop" ] || [ "$(BRANCH_NAME)" = "main" ]; then \
-					$(MAKE) push-image PYTHON_VERSION=$$version LAYER=$$layer BUILDER=$$builder IMAGE_VERSION=$(IMAGE_VERSION); \
+					$(MAKE) push-image REGISTRY_URL=$(REGISTRY_URL) PYTHON_VERSION=$$version LAYER=$$layer BUILDER=$$builder IMAGE_VERSION=$(IMAGE_VERSION); \
 				fi \
 			done; \
 			$(MAKE) clean-images; \

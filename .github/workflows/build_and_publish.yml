@@ -35,6 +35,6 @@ jobs:
           if [ "${{ github.ref }}" != 'refs/heads/main' ] && [ "${{ github.ref }}" != 'refs/heads/develop' ]; then
             SUPPORTED_PYTHON_VERSIONS="3.9 3.12"
           fi
-          make build-and-push-all-images
+          make build-and-push-all-images REGISTRY_URL=nielsborie
       - name: 🎉 Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
