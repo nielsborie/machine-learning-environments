@@ -30,11 +30,11 @@ jobs:
           sudo rm -rf /opt/ghc
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-      - name: ⚙️📤 Build and push image
+      - name: 📦 Build and push image
         run: |
           if [ "${{ github.ref }}" != 'refs/heads/main' ] && [ "${{ github.ref }}" != 'refs/heads/develop' ]; then
             SUPPORTED_PYTHON_VERSIONS="3.9 3.12"
           fi
-          make build-and-push-all-images REGISTRY_URL=nielsborie
+          make build-and-push-all-images
       - name: 🎉 Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

@@ -31,7 +31,7 @@ ENV PATH="/opt/openjdk-17/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/opt/openjdk-17/lib/server"
 
 # Install additional Python packages and configure Java
-RUN micromamba run -n py3.9 pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o --no-cache-dir
+RUN micromamba run -n ${ENV_NAME} pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o --no-cache-dir
 
 USER root
 RUN rm -rf /root/.cache/pip/*
